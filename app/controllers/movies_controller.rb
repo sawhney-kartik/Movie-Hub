@@ -33,21 +33,38 @@ class MoviesController < ApplicationController
 
    def search
       @movies = Array.new #Will store the movies to be displayed
+      allMovies = Movie.find(:all)
       if params[:title] and params[:title]!=""
-      searchText = params[:title].downcase
-         @movies = Movie.where("movie_name LIKE ?", "%#{searchText}%") 
-end
+         searchText = params[:title].downcase
+         for movie in allMovies
+            if movie.movie_name.downcase.include?(searchText)
+               @movies.append(movie)
+            end
+         end
+      end
       if params[:director] and params[:director]!=""
-      searchText = params[:director].downcase
-         @movies.append(Movie.where("movie_director LIKE ?", "%#{searchText}%")) 
+         searchText = params[:director].downcase
+         for movie in allMovies
+            if movie.movie_director.downcase.include?(searchText)
+               @movies.append(movie)
+            end
+         end
 end
       if params[:genre] and params[:genre]!=""
-      searchText = params[:genre].downcase
-         @movies.append(Movie.where("movie_tags LIKE ?", "%#{searchText}%")) 
+         searchText = params[:genre].downcase
+         for movie in allMovies
+            if movie.movie_tags.downcase.include?(searchText)
+               @movies.append(movie)
+            end
+         end
 end
       if params[:availability] and params[:availability]!=""
-      searchText = params[:availability].downcase
-         @movies.append(Movie.where("availability LIKE ?", "%#{searchText}%")) 
+         searchText = params[:availability].downcase
+         for movie in allMovies
+            if movie.availability.downcase.include?(searchText)
+               @movies.append(movie)
+            end
+         end
 end
 if params[:title]=="" and params[:genre]=="" and params[:director]=="" and params[:availability]==""
 @movies = Movie.find(:all)
