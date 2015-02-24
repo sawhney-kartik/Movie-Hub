@@ -1,0 +1,18 @@
+<h1> Add friend </h1>
+<div> For <%= @user.first_name %> </div>
+<% if flash.alert %>
+   <div> <%= flash.alert %> </div>
+<% end %>
+<% if flash.notice %>
+   <div> <%= flash.notice %> </div>
+<% end %>
+<% if flash[:error] %>
+   <div> <%= flash[:error] %> </div>
+<% end %>
+<%= form_for(@friendInfo, :url => {:action => :create, :id => @user.id}) do |form| %>
+   <div> <%= form.label(:user_id2, "/Enter friend ID") %>
+   <%= form.text_field(:user_id2) %> </div>
+   <div> <%= form.hidden_field :user_id, :value => session[:id] %> </div>
+   <div> <%= form.hidden_field :date_time, :value => DateTime.now %> </div>
+   <div> <%= form.submit "Add friend" %> </div>
+<% end %>

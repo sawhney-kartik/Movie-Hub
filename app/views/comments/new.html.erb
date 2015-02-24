@@ -1,0 +1,19 @@
+<h1> Add review </h1>
+<div> For <%= @movie.movie_name %> </div>
+<% if flash.alert %>
+   <div> <%= flash.alert %> </div>
+<% end %>
+<% if flash.notice %>
+   <div> <%= flash.notice %> </div>
+<% end %>
+<% if flash[:error] %>
+   <div> <%= flash[:error] %> </div>
+<% end %>
+<%= form_for(@commentInfo, :url => {:action => :create, :id => @movieID}) do |form| %>
+   <div> <%= form.label(:comment, "Comment:")%>
+   <%= form.text_field(:comment) %> </div>
+   <div> <%= form.hidden_field :user_id, :value => session[:id] %> </div>
+   <div> <%= form.hidden_field :movie_id, :value => @movie.id %> </div>
+   <div> <%= form.hidden_field :date_time, :value => DateTime.now %> </div>
+   <div> <%= form.submit "Post review" %> </div>
+<% end %>

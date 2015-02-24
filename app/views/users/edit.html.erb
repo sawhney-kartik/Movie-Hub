@@ -1,0 +1,25 @@
+<h1> Update Profile </h1>
+<% if flash.alert %>
+   <div> <%= flash.alert %> </div>
+<% end %>
+<% if flash.notice %>
+   <div> <%= flash.notice %> </div>
+<% end %>
+<% if flash[:error] %>
+   <div> <%= flash[:error] %> </div>
+<% end %>
+<%= form_for(@username, :url => {:action => :update}) do |form| %>
+
+   <div> <%= form.label(:interests, "Enter the movie genres that you're interested in:")%>
+   <%= form.text_field(:interests) %> </div>
+   <div> <%= form.label(:ad_interests, "Tell us about things you're interested in so that we can serve you with appropriate advertisements")%>
+   <%= form.text_field(:ad_interests) %> </div>
+<p>The following options allow you to change your password.<br>Enter the old password in all the three fields below if you do not want to change your password.</p>
+   <div> <%= form.label(:oldPassword, "Old password:")%>
+   <%= form.password_field(:oldPassword) %> </div>
+   <div> <%= form.label(:password, "New password:")%>
+   <%= form.password_field(:password) %> </div>
+   <div> <%= form.label(:password_confirmation, "Confirm new password:")%>
+   <%= form.password_field(:password_confirmation) %> </div>
+   <div> <%= form.submit "Update profile" %> </div>
+<% end %>

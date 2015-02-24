@@ -1,0 +1,17 @@
+<h3> Your friends </h3>
+      <% if @user.friends.empty? then %>
+         No friends
+               <div> <a href="/users/<%=@user.id%>/friends/new"> Add new friend </a> </div>
+      <% else %>
+      <ul>
+         <% set = {} %>
+         <% for userfriend in @user.friends %>
+            <% if set[userfriend.user_id2] then next %>
+            <% else set[userfriend.user_id2] = 1 end %>
+            
+            <% friend = User.find_by_id(userfriend.user_id2) %>
+            <li> <a href="/users/<%= friend.id %>"> <%= friend.first_name %> <%= friend.last_name %> </a> </li>
+         <% end %>
+                  <li> <div> <a href="/users/<%=@user.id%>/friends/new"> Add new friend </a> </div> </li>
+      </ul>
+   <% end %>

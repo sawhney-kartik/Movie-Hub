@@ -1,0 +1,8 @@
+<h3> Here are the movies. </h3>
+<h5> Click or hit the enter/return key on the name of the movie to view more details. </h5>
+<ul>
+   <%for movie in @all_movies%>
+      <li> <a href="/movies/<%= movie.id %>"> <%=movie.movie_name%> by <%=movie.movie_director%> </a> </li>
+   <%end%>
+</ul>
+<div> <a href="/users"> Go to user index </a> </div>

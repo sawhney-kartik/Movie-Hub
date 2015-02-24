@@ -1,0 +1,36 @@
+<h2> Add movie </h2>
+<% if flash.alert %>
+   <div> <%= flash.alert %> </div>
+<% end %>
+<% if flash.notice %>
+   <div> <%= flash.notice %> </div>
+<% end %>
+<% if flash[:error] %>
+   <div> <%= flash[:error] %> </div>
+<% end %>
+
+<%= form_for(@newMovie, :url => {:action => :create}) do |form| %>
+   <table>
+      <tr>
+         <td class="side_attribute"><%= form.label(:movie_name, "Movie Name:")%></td>
+         <td><%= form.text_field(:movie_name) %></td>
+      </tr>
+      <tr>
+         <td class="side_attribute"><%= form.label(:movie_director,"Director:")%></td>
+         <td><%= form.text_field(:movie_director) %></td>
+      </tr>
+      <tr>
+         <td class="side_attribute"><%= form.label(:movie_tags, "Movie tags:")%></td>
+         <td><%= form.text_field(:movie_tags) %></td>
+      </tr>
+      <tr>
+         <td class="side_attribute"><%= form.label(:Ratings, "Ratings:")%></td>
+         <td><%= form.text_field(:ratings) %></td>
+      </tr>
+      <tr>
+         <td class="side_attribute"><%= form.label(:availability, "Availability:")%></td>
+         <td><%= form.text_field(:availability) %></td>
+      </tr>
+   </table>
+   <div> <%= form.submit "Add movie" %> </div>
+<% end %>

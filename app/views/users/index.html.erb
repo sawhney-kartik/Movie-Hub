@@ -1,0 +1,7 @@
+<h3> Here are the users: </h3>
+<ul>
+   <%for usr in @all_users%>
+      <li> <a href="/users/<%= usr.id %>"> <%=usr.first_name%> <%=usr.last_name%> </a> </li>
+   <%end%>
+</ul>
+<div> <a href="/movies"> Go to movies index </a> </div>

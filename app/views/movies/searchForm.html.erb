@@ -1,0 +1,16 @@
+<h1> Simple search </h1>
+<p>Feel free to leave filters blank if you would not like to search using a particular filter.</p>
+
+<%= form_tag("/movies/search", method: "get") do%>
+   <div> <%= label_tag(:title, "Enter movie title")%>
+   <%= text_field_tag(:title) %> </div>
+   <div> <%= label_tag(:director, "Enter movie director")%>
+   <%= text_field_tag(:director) %> </div>
+   <div> <%= label_tag(:genre, "Enter any movie tags")%>
+   <%= text_field_tag(:genre) %> </div>
+   <div> <%= label_tag(:availability, "Enter content providers/theatres")%>
+   <%= text_field_tag(:availability) %> </div>
+   <div> <%= submit_tag("Search") %> </div>
+<% end %>
+<br/>
+<a href="/movies/advsearch">Advanced search</a>

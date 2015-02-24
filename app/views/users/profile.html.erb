@@ -1,0 +1,12 @@
+<h1>Your membership details</h1>
+<b>Name</b>: <%=@user.first_name%> <%=@user.last_name%> 
+<br>
+<b>Interests</b>: <%=@user.interests%>
+<br>
+<b>Advertisement interests</b>: <%=@user.ad_interests%>
+<p></p>
+<a href="/users/<%=session[:id]%>/edit">Update profile</a>
+<p></p>
+<h1>Your points</h1>
+Congratulations! You have accumulated <b>87 points</b>, and are eligible for any two of the following: free popcorn, free ticket to any movie at the nearest AMC Theatre, or free streaming of any movie from any of our content providers.<p><a href="mailto:kartiks2@stanford.edu">Email us</a> to get your prize!
+

@@ -1,0 +1,40 @@
+<% if flash.alert %>
+   <div> <%= flash.alert %> </div>
+<% end %>
+<% if flash.notice %>
+   <div> <%= flash.notice %> </div>
+<% end %>
+<h1> <%= @movie.movie_name %> </h1>
+<p>Reviews sorted by the degree of separation</p>
+<table>
+   <tr>
+      <td class="side_attribute">Director</td>
+      <td><%= @movie.movie_director %></td>
+   </tr>
+   <tr>
+      <td class="side_attribute">Availability</td>
+      <td><%= @movie.availability %></td>
+   </tr>  
+   <tr>
+      <td class="side_attribute">Ratings</td>
+      <td><%= @movie.ratings %></td>
+   </tr> 
+      <td class="side_attribute">Reviews</td>
+      <td><% if @movie.comments.empty? then %>
+         <div>
+            <a href="/movies/<%=@movie.id%>/comments/new">Add new review</a>
+         </div>
+         No reviews
+      <% else %>
+         <ul>
+         <li>
+            <div> <a href="/movies/<%=@movie.id%>/comments/new"> Add new comment </a> </div> 
+         </li>
+         <% for userComment in @movie.comments %>
+            <% commenter = userComment.user %>
+            <li> <%= userComment.comment %> <br/> Generated at <%= userComment.date_time.getlocal %> by <a href="/users/<%= commenter.id %>"> <%= commenter.first_name %> <%= commenter.last_name %> </a> </li>
+         <% end %> 
+         </ul>
+      <% end %></td>
+   </tr>
+</table>

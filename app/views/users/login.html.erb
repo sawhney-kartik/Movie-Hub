@@ -1,0 +1,21 @@
+<h1> Login page </h1>
+<% if flash.alert %>
+   <div> <%= flash.alert %> </div>
+<% end %>
+<% if flash.notice %>
+   <div> <%= flash.notice %> </div>
+<% end %>
+<%= form_for(:user, :url => {:action => :post_login}) do |form| %>
+  <table>
+    <tr>
+      <td class="side_attribute"><%= form.label(@user, "Username:") %></td>
+      <td><%= form.text_field(:username) %></td>
+    </tr>
+    <tr>
+      <td class="side_attribute"><%= form.label(@user, "Password:")%></td>
+      <td><%= form.password_field(:password) %></td>
+    </tr>  
+  </table>
+  <%= form.submit "Login" %>
+<% end %>
+<br/><a href="/users/new"> New user registration </a>

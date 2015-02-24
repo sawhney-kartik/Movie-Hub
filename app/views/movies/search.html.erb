@@ -1,0 +1,8 @@
+<h1>Search results</h1>
+<table>
+  <% for movie in @movies%>
+    <tr>
+      <td><a href="/movies/<%=movie.id%>"> <%=movie.movie_name%> </a></td>
+    </tr>
+  <% end %>
+</table>
