@@ -35,19 +35,19 @@ class MoviesController < ApplicationController
       @movies = Array.new #Will store the movies to be displayed
       if params[:title] and params[:title]!=""
       searchText = params[:title].downcase
-         @movies = Movie.where("movie_name like ?", "%#{searchText}%") 
+         @movies = Movie.where("movie_name LIKE ?", "%#{searchText}%") 
 end
       if params[:director] and params[:director]!=""
       searchText = params[:director].downcase
-         @movies.append(Movie.where("movie_director like ?", "%#{searchText}%")) 
+         @movies.append(Movie.where("movie_director LIKE ?", "%#{searchText}%")) 
 end
       if params[:genre] and params[:genre]!=""
       searchText = params[:genre].downcase
-         @movies.append(Movie.where("movie_tags like ?", "%#{searchText}%")) 
+         @movies.append(Movie.where("movie_tags LIKE ?", "%#{searchText}%")) 
 end
       if params[:availability] and params[:availability]!=""
       searchText = params[:availability].downcase
-         @movies.append(Movie.where("availability like ?", "%#{searchText}%")) 
+         @movies.append(Movie.where("availability LIKE ?", "%#{searchText}%")) 
 end
 if params[:title]=="" and params[:genre]=="" and params[:director]=="" and params[:availability]==""
 @movies = Movie.find(:all)
